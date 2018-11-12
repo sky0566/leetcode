@@ -1,0 +1,45 @@
+class Solution {
+    public int romanToInt(String s) {
+        int len = s.length();
+        char[] str = s.toCharArray();
+        int num = ChartoInt(str[0]);
+        for(int i=0; i<len-1; i++){
+            if(ChartoInt(str[i]) >= ChartoInt(str[i+1])){
+                num += ChartoInt(str[i+1]);
+            }
+            else{
+                num -= ChartoInt(str[i]);
+                num += ChartoInt(str[i+1])-ChartoInt(str[i]);
+            }
+        }
+        return num;
+    }
+    
+    static int ChartoInt(char str){
+        int num = 0;
+        switch(str){
+                case 'I': 
+    		num = 1;
+    		break;
+    	case 'V':
+    		num = 5;
+    		break;
+    	case 'X':
+    		num = 10;
+    		break;
+    	case 'L':
+    		num = 50;
+    		break;
+    	case 'C':
+    		num = 100;
+    		break;
+    	case 'D':
+    		num = 500;
+    		break;
+    	case 'M':
+    		num = 1000;
+    		break;
+        }
+        return num;
+    }
+}
